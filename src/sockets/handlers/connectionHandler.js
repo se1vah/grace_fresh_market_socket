@@ -8,7 +8,7 @@ function registerConnectionHandlers(io, socket) {
 
   // Handle client ping for latency checks
   socket.on('notify-order-to-shop', (data, callback) => {
-    io.emit('new-order-placed', { data });
+    io.emit('new-order-to-shop', { data });
   });
 
   // Handle disconnection
