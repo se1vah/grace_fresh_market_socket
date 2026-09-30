@@ -12,7 +12,6 @@ function registerConnectionHandlers(io, socket) {
   });
 
   socket.on('shop-delete-user', (data) => {
-    console.log("____", data)
     io.emit(`user-deleted-${data?.userId}`, true);
   });
 
