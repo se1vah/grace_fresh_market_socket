@@ -7,8 +7,12 @@ function registerConnectionHandlers(io, socket) {
   console.log(`[Socket] Client connected: ${socket.id}`);
 
   // Handle client ping for latency checks
-  socket.on('notify-order-to-shop', (data, callback) => {
+  socket.on('notify-order-to-shop', (data) => {
     io.emit('new-order-to-shop', { data });
+  });
+
+  socket.on('shop-delete-user', (data) => {
+    io.emit(`user-deleted-${data?.userId}`, true);
   });
 
   // Handle disconnection
