@@ -15,8 +15,8 @@ function registerConnectionHandlers(io, socket) {
     io.emit(`user-deleted-${data?.userId}`, true);
   });
 
-  socket.on('maintenance-notification', (data) => {
-    console.log("1111", data)
+  socket.on('maintenance-notification', (data, callback) => {
+    console.log("1111", { data, callback })
     io.emit('user-maintenance-notification', data);
   });
 
