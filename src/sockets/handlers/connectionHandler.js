@@ -16,6 +16,7 @@ function registerConnectionHandlers(io, socket) {
   });
 
   socket.on('maintenance-notification', (data) => {
+    console.log("1111", data)
     io.emit('user-maintenance-notification', data);
   });
 
