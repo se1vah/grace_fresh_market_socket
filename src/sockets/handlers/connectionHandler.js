@@ -31,7 +31,6 @@ function registerConnectionHandlers(io, socket) {
   });
 
   socket.on('maintenance-notification', (data, callback) => {
-    console.log("1111", { data })
     io.emit('user-maintenance-notification', data);
 
     if (typeof callback === 'function') {
