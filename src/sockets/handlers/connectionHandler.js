@@ -7,12 +7,27 @@ function registerConnectionHandlers(io, socket) {
   console.log(`[Socket] Client connected: ${socket.id}`);
 
   // Handle client ping for latency checks
-  socket.on('notify-order-to-shop', (data) => {
+  socket.on('notify-order-to-shop', (data, callback) => {
     io.emit('new-order-to-shop', { data });
+
+    if (typeof callback === 'function') {
+      callback({
+        success: true,
+        message: 'New order notification broadcasted',
+      });
+    }
   });
 
-  socket.on('shop-delete-user', (data) => {
+  socket.on('shop-delete-user', (data, callback) => {
     io.emit(`user-deleted-${data?.userId}`, true);
+
+
+    if (typeof callback === 'function') {
+      callback({
+        success: true,
+        message: 'User deleted notification broadcasted',
+      });
+    }
   });
 
   socket.on('maintenance-notification', (data, callback) => {
