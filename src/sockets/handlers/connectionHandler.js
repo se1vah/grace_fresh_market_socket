@@ -15,6 +15,10 @@ function registerConnectionHandlers(io, socket) {
     io.emit(`user-deleted-${data?.userId}`, true);
   });
 
+  socket.on('maintenance-notification', (data) => {
+    io.emit('user-maintenance-notification', data);
+  });
+
   // Handle disconnection
   socket.on('disconnect', (reason) => {
     console.log(`[Socket] Client disconnected: ${socket.id} (Reason: ${reason})`);
